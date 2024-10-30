@@ -27,8 +27,8 @@ let blockCount = random(1,13);
   blendMode(EXCLUSION);
     let scatterY = random(mouseY-100, mouseY+100);
     let scatterX = random(mouseX-100, mouseX+100);
-    let scaleBlock = random (200,800);
-    image(cg, scatterX, scatterY, scaleBlock, scaleBlock);
+    let scaleBlock = random (.2,.8);
+    image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
   blendMode(BLEND);
     let obscureX = random(0,width);
     let obscureY = random(0,height);
@@ -48,10 +48,9 @@ let blockCount = random(1,13);
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  calculateDimensions();
 }
 
-function mousePressed(){ //bei click Pause, bei 2. click weiter
+function mousePressed(){ 
   if(pause==false){
     noLoop();
     pause=true;
@@ -60,4 +59,5 @@ function mousePressed(){ //bei click Pause, bei 2. click weiter
     pause = false;
   }
 }
+
 
