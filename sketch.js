@@ -1,4 +1,5 @@
 let cg;
+let pause = false;
 
 
 
@@ -22,13 +23,6 @@ function draw() {
 let prob = random (0,1);
 
 
-if (prob < .75) {
-  canvas.imageSmoothingEnabled = false;
-}
-else {
-  canvas.imageSmoothingEnabled = true;
-}
-
 let blockCount = random(1,13);
   blendMode(EXCLUSION);
     let scatterY = random(mouseY-100, mouseY+100);
@@ -36,7 +30,16 @@ let blockCount = random(1,13);
     let scaleBlock = random (200,800);
     image(cg, scatterX, scatterY, scaleBlock, scaleBlock);
   blendMode(BLEND);
-  
+    let obscureX = random(0,width);
+    let obscureY = random(0,height);
+    let obscureScale = random (100,400);
+
+    
+    if (prob<.5){
+      fill(255);
+      strokeWeight(0);
+    square(obscureX,obscureY,obscureScale);
+    }
 
   if (prob < .025) {
     background(255);
@@ -46,5 +49,15 @@ let blockCount = random(1,13);
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   calculateDimensions();
+}
+
+function mousePressed(){ //bei click Pause, bei 2. click weiter
+  if(pause==false){
+    noLoop();
+    pause=true;
+  }else{
+    loop();
+    pause = false;
+  }
 }
 
