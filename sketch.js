@@ -10,7 +10,7 @@ function setup() {
   cg = createGraphics(5, 5);
   cg.noSmooth();
   cg.strokeWeight(0);
-  cg.fill(255,125,0);
+  cg.fill(255,255,2550);
   cg.square(0,0, 1);
   // this._renderer.getTexture(cg).setInterpolation(NEAREST, NEAREST);
   background(255);
@@ -36,6 +36,8 @@ let blockCount = random(1,13);
     let scaleBlock = random (200,800);
     image(cg, scatterX, scatterY, scaleBlock, scaleBlock);
   blendMode(BLEND);
+  
+
   if (prob < .025) {
     background(255);
   }
