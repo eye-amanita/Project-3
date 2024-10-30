@@ -1,18 +1,23 @@
-
+let cg;
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   setAttributes('antialias', true);
   canvas.imageSmoothingEnabled = false;
-  cg = createGraphics(5, 5, WEBGL);
+  cg = createGraphics(1, 1, WEBGL);
   cg.noSmooth();
-  cg.square(3, 3, 1);
-  this._renderer.getTexture(cg).setInterpolation(NEAREST, NEAREST);
+  cg.strokeWeight(0);
+  cg.fill(0);
+  cg.square(0, 0, 1);
+  // this._renderer.getTexture(cg).setInterpolation(NEAREST, NEAREST);
+  background(220);
 }
 
 function draw() {
-  background(220);
+
+  
   imageMode(CENTER);
-  image(cg, 0, 0, 500, 500);
+  image(cg, mouseX, mouseY, 200, 200);
 }
+
