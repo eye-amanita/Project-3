@@ -3,6 +3,9 @@ let pause = false;
 let mouseMoving = false;
 let timer = 0;
 
+let x;
+let y;
+
 
 
 function setup() {
@@ -16,8 +19,11 @@ function setup() {
   cg.fill(255,255,2550);
   cg.square(0,0, 1);
   // this._renderer.getTexture(cg).setInterpolation(NEAREST, NEAREST);
+  x = width / 2;
+  y = height / 2;
   background(255);
-  frameRate(24);
+  frameRate(20);
+
 
 }
 
@@ -29,7 +35,22 @@ if (timer == 2) {
     let scatterY = random(mouseY-100, mouseY+100);
     let scatterX = random(mouseX-100, mouseX+100);
     let scaleBlock = random (.2,.8);
-    image(cg, 20, 20, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
+    image(cg, x, y, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
+    const r = floor(random(4));
+  switch (r) {
+    case 0:
+      x = x + scatterX*.25;
+      break;
+    case 1:
+      x = x - scatterX*.25;
+      break;
+    case 2:
+      y = y + scatterY*.25;
+      break;
+    case 3:
+      y = y - scatterY*.25;
+      break;
+  }
 } else {
 
 }
@@ -59,6 +80,8 @@ function mouseMoved(){
   timer = 0;
   if (timer <2){
     if (pause == false){
+      x = mouseX;
+      y = mouseY;
       mouseMoving = true;
       blendMode(EXCLUSION);
       let scatterY = random(mouseY-100, mouseY+100);
