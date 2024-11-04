@@ -14,9 +14,13 @@ function setup() {
   setAttributes('antialias', true);
   canvas.imageSmoothingEnabled = false;
   cg = createGraphics(5, 5);
+  // cg.colorMode(HSB);
+  // cg.colorMode(RGB);
   cg.noSmooth();
   cg.strokeWeight(0);
-  cg.fill(255,255,2550);
+  cg.fill(20,200,50); //Pink RGB
+  cg.fill(255,255,255); //Pink RGB
+  // cg.fill(340,20,100,255); //HSB
   cg.square(0,0, 1);
   // this._renderer.getTexture(cg).setInterpolation(NEAREST, NEAREST);
   x = width / 2;
@@ -34,21 +38,21 @@ if (timer == 2) {
   blendMode(EXCLUSION);
     let scatterY = random(mouseY-100, mouseY+100);
     let scatterX = random(mouseX-100, mouseX+100);
-    let scaleBlock = random (.2,.8);
+    let scaleBlock = random (.2,.65);
     image(cg, x, y, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
     const r = floor(random(4));
   switch (r) {
     case 0:
-      x = x + scatterX*.25;
+      x = x + scatterX*.05;
       break;
     case 1:
-      x = x - scatterX*.25;
+      x = x - scatterX*.05;
       break;
     case 2:
-      y = y + scatterY*.25;
+      y = y + scatterY*.1;
       break;
     case 3:
-      y = y - scatterY*.25;
+      y = y - scatterY*.1;
       break;
   }
 } else {
