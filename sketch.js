@@ -22,7 +22,7 @@ function setup() {
   cg.strokeWeight(0);
   cg.fill(20,200,50); //Pink RGB
   cg.fill(255,255,255); //Black RGB
-  cg.background(255,0,0);
+  // cg.background(255,0,0);
   
   cg.square(0,0, 1);
   
@@ -46,15 +46,15 @@ let prob = random (0,1);
 // Grid Walk Neutral Behavior
 if (timer == 2) {
   blendMode(EXCLUSION);
-    let scaleBlock = .8;
+    let scaleBlock = .25;
     let power = 
     
     image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
     
-    xGridWalk = xGridWalk+(pow(scaleBlock,1)*width);
+    xGridWalk = xGridWalk+((scaleBlock*width)/4);
     
-    if (xGridWalk > width - ((scaleBlock)*scaleBlock*width)){
-      yGridWalk = yGridWalk + ((scaleBlock)*scaleBlock*width);
+    if (xGridWalk > width - ((scaleBlock*width)/4)){
+      yGridWalk = yGridWalk + ((scaleBlock*width)/4);
       xGridWalk = 0;
     }
 
