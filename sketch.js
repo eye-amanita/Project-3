@@ -16,12 +16,13 @@ function setup() {
   // calculateDimensions();
   setAttributes('antialias', true);
   canvas.imageSmoothingEnabled = false;
-  cg = createGraphics(5, 5);
+  cg = createGraphics(5 , 5);
   // cg.colorMode(HSB);
   cg.noSmooth();
   cg.strokeWeight(0);
   cg.fill(20,200,50); //Pink RGB
   cg.fill(255,255,255); //Black RGB
+  cg.background(255,0,0);
   
   cg.square(0,0, 1);
   
@@ -45,14 +46,15 @@ let prob = random (0,1);
 // Grid Walk Neutral Behavior
 if (timer == 2) {
   blendMode(EXCLUSION);
-    let scaleBlock = .5;
+    let scaleBlock = .8;
+    let power = 
     
-    image(cg, xGridWalk, yGridWalk, (scaleBlock*width), (scaleBlock*width));
+    image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
     
-    xGridWalk = xGridWalk+((scaleBlock*scaleBlock)*scaleBlock*width);
+    xGridWalk = xGridWalk+(pow(scaleBlock,1)*width);
     
-    if (xGridWalk > width - ((scaleBlock*scaleBlock)*scaleBlock*width)){
-      yGridWalk = yGridWalk + ((scaleBlock*scaleBlock)*scaleBlock*width);
+    if (xGridWalk > width - ((scaleBlock)*scaleBlock*width)){
+      yGridWalk = yGridWalk + ((scaleBlock)*scaleBlock*width);
       xGridWalk = 0;
     }
 
@@ -63,6 +65,28 @@ if (timer == 2) {
     }
 
 }
+
+//Spaced Blinking Grid Neutral Behavior
+// if (timer == 2) {
+//   blendMode(EXCLUSION);
+//     let scaleBlock = .575;
+    
+//     image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
+    
+//     xGridWalk = xGridWalk+((scaleBlock)*scaleBlock*width);
+    
+//     if (xGridWalk > width - ((scaleBlock)*scaleBlock*width)){
+//       yGridWalk = yGridWalk + ((scaleBlock)*scaleBlock*width);
+//       xGridWalk = 0;
+//     }
+
+//     if (yGridWalk > height){
+
+//     xGridWalk = 0;
+//     yGridWalk = 0;
+//     }
+
+// }
 
 //Random Walk Neutral Behavior
 
