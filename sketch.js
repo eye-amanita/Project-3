@@ -9,6 +9,17 @@ let y;
 let xGridWalk;
 let yGridWalk;
 
+let scaleBlock;
+
+let modeArray = [1,2,3,4];
+let neutralMode;
+
+let randomWalkScaleFactorX;
+let randomWalkScaleFactorY;
+
+let rotateArray = [0, 1, 2, 3];
+let rotateFactor = random(rotateArray);
+
 
 
 function setup() {
@@ -35,6 +46,11 @@ function setup() {
 
   xGridWalk = 0;
   yGridWalk = 0;
+
+  randomWalkScaleFactorX = random(.02,.15);
+  randomWalkScaleFactorY = random(.02,.15);
+
+  neutralMode = random(modeArray);
   frameRate(20);
   
 
@@ -43,9 +59,21 @@ function setup() {
 function draw() {
 let prob = random (0,1);
 
+ print(neutralMode);
 
+if (neutralMode == 1){
+  randomWalkNeutral(randomWalkScaleFactorX,randomWalkScaleFactorY);
+}
+ if (neutralMode == 2){
+  gridWalkNeutral();
+} 
+if (neutralMode == 3){
+  spacedGridNeutral();
+}
+if (neutralMode == 4){
+  randomPlaceNeutral();
+}
 
-gridWalkNeutral();
 
 
 
@@ -83,6 +111,7 @@ function mouseMoved(){
       let scatterY = random(mouseY-100, mouseY+100);
       let scatterX = random(mouseX-100, mouseX+100);
       let scaleBlock = random (.2,.8);
+      
       image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
       timer = timer-1;
     }
@@ -103,7 +132,13 @@ function mousePressed(){
   }
 }
 
-function randomWalkNeutral(){
+function keyPressed(){
+  if (key == ' '){
+    reroll();
+  }
+}
+
+function randomWalkNeutral(randomWalkScaleFactorX,randomWalkScaleFactorY){
   if (timer == 2) {
       blendMode(EXCLUSION);
         let scatterY = random(mouseY-100, mouseY+100);
@@ -113,26 +148,28 @@ function randomWalkNeutral(){
         const r = floor(random(4));
       switch (r) {
         case 0:
-          x = x + scatterX*.05;
+          x = x + scatterX*randomWalkScaleFactorX;
           break;
         case 1:
-          x = x - scatterX*.05;
+          x = x - scatterX*randomWalkScaleFactorX;
           break;
         case 2:
-          y = y + scatterY*.1;
+          y = y + scatterY*randomWalkScaleFactorY;;
           break;
         case 3:
-          y = y - scatterY*.1;
+          y = y - scatterY*randomWalkScaleFactorY;
           break;
       }
   }
 }
 
-function gridWalkNeutral (){
+
+
+function gridWalkNeutral (scaleBlock){
 if (timer == 2) {
   blendMode(EXCLUSION);
-    let scaleBlock = .4;
-    let power = 
+    scaleBlock = .4;
+    
     
     image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
     
@@ -152,10 +189,10 @@ if (timer == 2) {
 }
 }
 
-function spacedGridNeutral(){
+function spacedGridNeutral(scaleBlock){
   if (timer == 2) {
     blendMode(EXCLUSION);
-      let scaleBlock = .575;
+      scaleBlock = .575;
       
       image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
       
@@ -173,6 +210,28 @@ function spacedGridNeutral(){
       }
   
   }
+}
+
+function randomPlaceNeutral(){
+  if (timer == 2) {
+    blendMode(EXCLUSION);
+      let x = random(0, width);
+      let y = random(0, height);
+      let scaleBlock = random (.2,.65);
+      image(cg, x, y, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
+
+    }
+}
+
+function reroll(){
+  xGridWalk = random(width/3, width-width/3);
+  yGridWalk = random(height/3, height-height/3);
+  neutralMode = random(modeArray);
+
+  randomWalkScaleFactorX = random(.02,.15);
+  randomWalkScaleFactorY = random(.02,.15); 
+
+
 }
 
 
