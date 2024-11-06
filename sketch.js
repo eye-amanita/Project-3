@@ -17,10 +17,9 @@ let neutralMode;
 let randomWalkScaleFactorX;
 let randomWalkScaleFactorY;
 
-let rotateArray = [0, 1, 2, 3];
-let rotateFactor = random(rotateArray);
 
-
+let invertProb;
+let mouseInvert = false;
 
 
 
@@ -119,7 +118,7 @@ function mouseMoved(){
       let scaleBlock = random (.2,.8);
       
       image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
-      // cg.rotate((HALF_PI)*rotateFactor);
+      
       timer = timer-1;
     }
   }
@@ -141,6 +140,7 @@ function mousePressed(){
 
 function keyPressed(){
   if (key == ' '){
+    mouseReroll();
     reroll();
   }
 }
@@ -267,6 +267,17 @@ function reroll(){
   
 
 
+}
+
+function mouseReroll (){
+  invertProb = random(0,1);
+
+  if (invertProb > .5){
+    mouseInvert = false;
+  } if (invertProb < .5){
+    mouseInvert = true;
+  }
+  
 }
 
 
