@@ -21,6 +21,8 @@ let randomWalkScaleFactorY;
 let invertProb;
 let mouseInvert = false;
 
+let offsetRange;
+
 
 
 function setup() {
@@ -53,6 +55,8 @@ function setup() {
   randomWalkScaleFactorX = random(.02,.15);
   randomWalkScaleFactorY = random(.02,.15);
 
+  offsetRange = random(width*.05,width*.175);
+
   // neutralMode = random(modeArray);
   frameRate(20);
   
@@ -72,7 +76,7 @@ if (neutralMode == 1){
   gridWalkNeutral(scaleBlock);
 } 
 if (neutralMode == 3){
-  spacedGridNeutral();
+  spacedGridNeutral(scaleBlock);
 }
 if (neutralMode == 4){
   randomPlaceNeutral();
@@ -113,18 +117,18 @@ function mouseMoved(){
       mouseMoving = true;
       blendMode(EXCLUSION);
       if (mouseInvert == false){
-      let scatterY = random(mouseY-100, mouseY+100);
-      let scatterX = random(mouseX-100, mouseX+100);
-      let scaleBlock = random (.2,.8);
+      let scatterY = random(mouseY-offsetRange, mouseY+offsetRange);
+      let scatterX = random(mouseX-offsetRange, mouseX+offsetRange);
+      let scaleBlock = random (.2,.7);
       
       image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
       } 
 
       if (mouseInvert == true){
         
-          let scatterY = random(height-mouseY-100, height-mouseY+100);
-          let scatterX = random(width-mouseX-100, width-mouseX+100);
-          let scaleBlock = random (.2,.8);
+          let scatterY = random(height-mouseY-offsetRange, height-mouseY+offsetRange);
+          let scatterX = random(width-mouseX-offsetRange, width-mouseX+offsetRange);
+          let scaleBlock = random (.2,.7);
           
           image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
       }
@@ -208,7 +212,7 @@ if (timer == 2) {
 function spacedGridNeutral(scaleBlock){
   if (timer == 2) {
     blendMode(EXCLUSION);
-      scaleBlock = .575;
+      //    
       
       image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
       
@@ -270,8 +274,16 @@ function reroll(){
    scaleBlock = random(.1,.5);
   } 
 
+  if (neutralMode == 2){
+    scaleBlock = random(.4,.65);
+   } 
+
   randomWalkScaleFactorX = random(.02,.15);
   randomWalkScaleFactorY = random(.02,.15); 
+
+  offsetRange = random(width*.05,width*.175);
+
+  print(offsetRange);
 
   
 
