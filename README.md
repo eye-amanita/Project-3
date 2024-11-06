@@ -1,4 +1,4 @@
-# Project 3 - AAA-ARSAALTN-XPRMNAT
+# Project 3 - AAA-ARS-AAL-TN-XPRAAAA
 
 This project started as an experimentation on pushing resolution compatibility, seeing what imagery and artifacting could occur when
 making low resolution shapes and blowing them up to a much much larger scale. I wanted to channel a harsh, angular, and very digital 
