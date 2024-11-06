@@ -122,8 +122,8 @@ function mouseMoved(){
 
       if (mouseInvert == true){
         
-          let scatterY = random(mouseX-100, mouseX+100);
-          let scatterX = random(mouseY-100, mouseY+100);
+          let scatterY = random(height-mouseY-100, height-mouseY+100);
+          let scatterX = random(width-mouseX-100, width-mouseX+100);
           let scaleBlock = random (.2,.8);
           
           image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
@@ -281,9 +281,9 @@ function reroll(){
 function mouseReroll (){
   invertProb = random(0,1);
 
-  if (invertProb > .5){
+  if (invertProb > .4){
     mouseInvert = false;
-  } if (invertProb < .5){
+  } if (invertProb < .4 ){
     mouseInvert = true;
   }
   
