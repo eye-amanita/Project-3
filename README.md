@@ -19,7 +19,10 @@ Most of these behaviors have certain factors/ranges of numbers which are randomi
 
 On top of the two-states with randomized factors + the interactivity of the piece, I added a function that builds up obscuring
 squares of various randomized sizes as well as a 2.5% probability of the screen being wiped, leading to additional complexity
-and erratic unpredictability in the 
+and erratic unpredictability in the imagery created.
+
+Various scales and values across the piece are linked particularly to screen width (and to a lesser extent, screen height) so
+resizing the window leads to additional variation, even within the same set of randomized parameters.
 
 I implemented a pause on mouse click function as well as a save image function to allow users to both slow down and save the erratic
 artifacting that occurs with interaction.
