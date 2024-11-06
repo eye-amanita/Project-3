@@ -22,6 +22,8 @@ let rotateFactor = random(rotateArray);
 
 
 
+
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // calculateDimensions();
@@ -37,9 +39,11 @@ function setup() {
   
   cg.square(0,0, 1);
   
+  
 
   // x = width / 2;
   // y = height / 2;
+  reroll();
   background(255);
   x = 0;
   y = 0;
@@ -50,7 +54,7 @@ function setup() {
   randomWalkScaleFactorX = random(.02,.15);
   randomWalkScaleFactorY = random(.02,.15);
 
-  neutralMode = random(modeArray);
+  // neutralMode = random(modeArray);
   frameRate(20);
   
 
@@ -59,13 +63,14 @@ function setup() {
 function draw() {
 let prob = random (0,1);
 
+
  print(neutralMode);
 
 if (neutralMode == 1){
   randomWalkNeutral(randomWalkScaleFactorX,randomWalkScaleFactorY);
 }
  if (neutralMode == 2){
-  gridWalkNeutral();
+  gridWalkNeutral(scaleBlock);
 } 
 if (neutralMode == 3){
   spacedGridNeutral();
@@ -108,11 +113,13 @@ function mouseMoved(){
       y = mouseY;
       mouseMoving = true;
       blendMode(EXCLUSION);
+      
       let scatterY = random(mouseY-100, mouseY+100);
       let scatterX = random(mouseX-100, mouseX+100);
       let scaleBlock = random (.2,.8);
       
       image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
+      // cg.rotate((HALF_PI)*rotateFactor);
       timer = timer-1;
     }
   }
@@ -168,7 +175,7 @@ function randomWalkNeutral(randomWalkScaleFactorX,randomWalkScaleFactorY){
 function gridWalkNeutral (scaleBlock){
 if (timer == 2) {
   blendMode(EXCLUSION);
-    scaleBlock = .4;
+    // scaleBlock = .4;
     
     
     image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
@@ -224,12 +231,40 @@ function randomPlaceNeutral(){
 }
 
 function reroll(){
+  let r = 255;
+  let g = 255;
+  let b = 255;
+
+  let colorProb;
+  colorProb = random(0,1);
+
+  if (colorProb <  .7){
+    r = 255;
+    g = 255;
+    b = 255;
+  } if (colorProb > .7) {
+    r = random(100,255);
+    g = random (100,255);
+    b = random (100,255);
+  }
+  cg.fill(r,g,b);
+  cg.square(0,0, 1); 
+ 
+  blendMode(BLEND);
+  background(255);
+
   xGridWalk = random(width/3, width-width/3);
   yGridWalk = random(height/3, height-height/3);
   neutralMode = random(modeArray);
 
+  if (neutralMode == 2){
+   scaleBlock = random(.1,.5);
+  } 
+
   randomWalkScaleFactorX = random(.02,.15);
   randomWalkScaleFactorY = random(.02,.15); 
+
+  
 
 
 }
