@@ -112,13 +112,22 @@ function mouseMoved(){
       y = mouseY;
       mouseMoving = true;
       blendMode(EXCLUSION);
-      
+      if (mouseInvert == false){
       let scatterY = random(mouseY-100, mouseY+100);
       let scatterX = random(mouseX-100, mouseX+100);
       let scaleBlock = random (.2,.8);
       
       image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
-      
+      } 
+
+      if (mouseInvert == true){
+        
+          let scatterY = random(mouseX-100, mouseX+100);
+          let scatterX = random(mouseY-100, mouseY+100);
+          let scaleBlock = random (.2,.8);
+          
+          image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
+      }
       timer = timer-1;
     }
   }
