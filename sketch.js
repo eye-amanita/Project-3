@@ -238,15 +238,15 @@ function reroll(){
   let colorProb;
   colorProb = random(0,1);
 
-  // if (colorProb <  .7){
-  //   r = 255;
-  //   g = 255;
-  //   b = 255;
-  // } if (colorProb > .7) {
+  if (colorProb <  .7){
+    r = 255;
+    g = 255;
+    b = 255;
+  } if (colorProb > .7) {
     r = random(100,255);
     g = random (100,255);
     b = random (100,255);
-  // }
+  }
   cg.fill(r,g,b);
   cg.square(0,0, 1); 
  
