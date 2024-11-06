@@ -43,77 +43,11 @@ function setup() {
 function draw() {
 let prob = random (0,1);
 
-// Grid Walk Neutral Behavior
-// if (timer == 2) {
-//   blendMode(EXCLUSION);
-//     let scaleBlock = .4;
-//     let power = 
-    
-//     image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
-    
-//     xGridWalk = xGridWalk+((scaleBlock*width)/4);
-    
-//     if (xGridWalk > width - ((scaleBlock*width)/4)){
-//       yGridWalk = yGridWalk + ((scaleBlock*width)/4);
-//       xGridWalk = 0;
-//     }
 
-//     if (yGridWalk > height){
 
-//     xGridWalk = 0;
-//     yGridWalk = 0;
-//     }
+gridWalkNeutral();
 
-// }
 
-//Spaced Blinking Grid Neutral Behavior
-if (timer == 2) {
-  blendMode(EXCLUSION);
-    let scaleBlock = .575;
-    
-    image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
-    
-    xGridWalk = xGridWalk+((scaleBlock)*scaleBlock*width);
-    
-    if (xGridWalk > width - ((scaleBlock)*scaleBlock*width)){
-      yGridWalk = yGridWalk + ((scaleBlock)*scaleBlock*width);
-      xGridWalk = 0;
-    }
-
-    if (yGridWalk > height){
-
-    xGridWalk = 0;
-    yGridWalk = 0;
-    }
-
-}
-
-//Random Walk Neutral Behavior
-
-// if (timer == 2) {
-//   blendMode(EXCLUSION);
-//     let scatterY = random(mouseY-100, mouseY+100);
-//     let scatterX = random(mouseX-100, mouseX+100);
-//     let scaleBlock = random (.2,.65);
-//     image(cg, x, y, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
-//     const r = floor(random(4));
-//   switch (r) {
-//     case 0:
-//       x = x + scatterX*.05;
-//       break;
-//     case 1:
-//       x = x - scatterX*.05;
-//       break;
-//     case 2:
-//       y = y + scatterY*.1;
-//       break;
-//     case 3:
-//       y = y - scatterY*.1;
-//       break;
-//   }
-// } else {
-
-// }
 
 
 blendMode(BLEND);
@@ -166,6 +100,78 @@ function mousePressed(){
   }else{
     loop();
     pause = false;
+  }
+}
+
+function randomWalkNeutral(){
+  if (timer == 2) {
+      blendMode(EXCLUSION);
+        let scatterY = random(mouseY-100, mouseY+100);
+        let scatterX = random(mouseX-100, mouseX+100);
+        let scaleBlock = random (.2,.65);
+        image(cg, x, y, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
+        const r = floor(random(4));
+      switch (r) {
+        case 0:
+          x = x + scatterX*.05;
+          break;
+        case 1:
+          x = x - scatterX*.05;
+          break;
+        case 2:
+          y = y + scatterY*.1;
+          break;
+        case 3:
+          y = y - scatterY*.1;
+          break;
+      }
+  }
+}
+
+function gridWalkNeutral (){
+if (timer == 2) {
+  blendMode(EXCLUSION);
+    let scaleBlock = .4;
+    let power = 
+    
+    image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
+    
+    xGridWalk = xGridWalk+((scaleBlock*width)/4);
+    
+    if (xGridWalk > width){
+      yGridWalk = yGridWalk + ((scaleBlock*width)/4);
+      xGridWalk = 0;
+    }
+
+    if (yGridWalk > height){
+
+    xGridWalk = 0;
+    yGridWalk = 0;
+    }
+
+}
+}
+
+function spacedGridNeutral(){
+  if (timer == 2) {
+    blendMode(EXCLUSION);
+      let scaleBlock = .575;
+      
+      image(cg, xGridWalk, yGridWalk, scaleBlock*width, scaleBlock*width);
+      
+      xGridWalk = xGridWalk+((scaleBlock)*scaleBlock*width);
+      
+      if (xGridWalk > width - ((scaleBlock)*scaleBlock*width)){
+        yGridWalk = yGridWalk + ((scaleBlock)*scaleBlock*width);
+        xGridWalk = 0;
+      }
+  
+      if (yGridWalk > height){
+  
+      xGridWalk = 0;
+      yGridWalk = 0;
+      }
+  
   }
 }
 
