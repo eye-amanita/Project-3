@@ -22,6 +22,7 @@ let invertProb;
 let mouseInvert = false;
 
 let offsetRange;
+let counter = 0;
 
 
 
@@ -155,6 +156,11 @@ function keyPressed(){
   if (key == ' '){
     mouseReroll();
     reroll();
+  }
+
+  if (key == 's' || key == 'S'){
+    saveCanvas('capture'+counter,'png');
+    counter = counter + 1;
   }
 }
 
