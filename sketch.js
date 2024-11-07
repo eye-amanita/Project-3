@@ -164,6 +164,35 @@ function keyPressed(){
   }
 }
 
+function touchMoved(){
+  timer = 0;
+  if (timer <2){
+    if (pause == false){
+      x = mouseX;
+      y = mouseY;
+      mouseMoving = true;
+      blendMode(EXCLUSION);
+      if (mouseInvert == false){
+      let scatterY = random(mouseY-offsetRange, mouseY+offsetRange);
+      let scatterX = random(mouseX-offsetRange, mouseX+offsetRange);
+      let scaleBlock = random (.2,.7);
+      
+      image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
+      } 
+
+      if (mouseInvert == true){
+        
+          let scatterY = random(height-mouseY-offsetRange, height-mouseY+offsetRange);
+          let scatterX = random(width-mouseX-offsetRange, width-mouseX+offsetRange);
+          let scaleBlock = random (.2,.7);
+          
+          image(cg, scatterX, scatterY, (1.25*scaleBlock)*width, (1.25*scaleBlock)*width);
+      }
+      timer = timer-1;
+    }
+  }t
+}
+
 function randomWalkNeutral(randomWalkScaleFactorX,randomWalkScaleFactorY){
   if (timer == 2) {
       blendMode(EXCLUSION);
