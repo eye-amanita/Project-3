@@ -157,11 +157,11 @@ function keyPressed(){
     mouseReroll();
     reroll();
   }
+}
 
-  if (key == 's' || key == 'S'){
-    saveCanvas('capture'+counter,'png');
-    counter = counter + 1;
-  }
+  function doubleClicked() {
+      mouseReroll();
+      reroll();
 }
 
 function touchMoved(){
