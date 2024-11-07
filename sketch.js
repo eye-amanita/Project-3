@@ -309,7 +309,7 @@ function reroll(){
    scaleBlock = random(.1,.5);
   } 
 
-  if (neutralMode == 2){
+  if (neutralMode == 3){
     scaleBlock = random(.4,.65);
    } 
 
