@@ -26,6 +26,8 @@ let counter = 0;
 
 
 
+
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // calculateDimensions();
@@ -157,6 +159,12 @@ function keyPressed(){
     mouseReroll();
     reroll();
   }
+
+  if (key == 's' || key == 'S'){
+    saveCanvas('capture'+counter,'png');
+    counter = counter + 1;
+  }
+
 }
 
   function doubleClicked() {
