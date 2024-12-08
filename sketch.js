@@ -107,7 +107,7 @@ blendMode(BLEND);
 
   if (timer > 2){
     timer = 2;
-  }
+  } 
   
 }
 
@@ -343,5 +343,6 @@ function mouseReroll (){
   }
   
 }
+
 
 
